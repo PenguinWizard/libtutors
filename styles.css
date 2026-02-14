@@ -1,0 +1,53 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+}
+#title {
+    font-family: 'EB Garamond', serif;
+    margin: 100px;
+    text-align: center;
+}
+.subtext {
+    margin: 100px;
+    text-align: center;
+    color: var(--bs-secondary-color)
+}
+#websitelink {
+    color: var(--bs-secondary-color);
+    font-style: italic;
+    text-decoration: none;
+    background-image: linear-gradient(steelblue, steelblue);
+    background-size: 0% 0.1em;
+    background-position-y: 100%;
+    background-position-x: 0%;
+    background-repeat: no-repeat;
+    transition: background-size 0.2s ease-in-out;
+}
+#websitelink:hover, #websitelink:focus, #websitelink:active {
+    transition-duration: 0.5s;
+    color: steelblue;
+    background-size: 100% 0.1em;
+}
+.menu {
+    background-color: black;
+    overflow: hidden;
+    color: white;
+}
+.menu a {
+    float: left;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+.menu a:hover {
+    transition-duration: 0.5s;
+    background-color: #e0dfda;
+    color: black;
+}
+.menu a.active {
+    background-color: white;
+    color:black;
+}
