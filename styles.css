@@ -18,7 +18,7 @@ body {
     color: var(--bs-secondary-color);
     font-style: italic;
     text-decoration: none;
-    background-image: linear-gradient(steelblue, steelblue);
+    background-image: linear-gradient(rgb(158, 47, 25),rgb(158,47,25));
     background-size: 0% 0.1em;
     background-position-y: 100%;
     background-position-x: 0%;
@@ -27,7 +27,7 @@ body {
 }
 #websitelink:hover, #websitelink:focus, #websitelink:active {
     transition-duration: 0.5s;
-    color: steelblue;
+    color: rgb(158,47,25);
     background-size: 100% 0.1em;
 }
 .menu {
@@ -52,4 +52,17 @@ body {
 .menu a.active {
     background-color: white;
     color:black;
+}
+.imagecontainer {
+    text-align:center;
+}
+.titlewrapper {
+    background-image: url("https://lh3.googleusercontent.com/p/AF1QipNBLJ7YsnhAUMuHeM1JzHUFjmkKgbmQShfbmYTY=s1360-w1360-h1020-rw");
+    background-size: cover;
+    background-position: center;
+}
+.titletextoverlay {
+    padding-bottom: 50px;
+    padding-top: 10px;
+    background-color: rgba(255,255,255,0.5)
 }
