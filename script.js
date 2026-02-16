@@ -24,7 +24,7 @@ function markAttendance() {
 
 async function increaseAttendance() {
   try {
-    const response = await fetch("https://script.google.com/macros/s/AKfycbztzl7tuBZDQDlSsfsHbfzwyZoP4Owb1bC-Q7zH-Knu8n8Q6i7xhf-yff8WhfnAOv4MoA/exec", {
+    const response = await fetch("https://cors-anywhere.herokuapp.com/"+"https://script.google.com/macros/s/AKfycbztzl7tuBZDQDlSsfsHbfzwyZoP4Owb1bC-Q7zH-Knu8n8Q6i7xhf-yff8WhfnAOv4MoA/exec", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ change: 1 })
@@ -46,7 +46,7 @@ async function increaseAttendance() {
 
 async function decreaseAttendance() {
   try {
-    const response = await fetch("https://script.google.com/macros/s/AKfycbztzl7tuBZDQDlSsfsHbfzwyZoP4Owb1bC-Q7zH-Knu8n8Q6i7xhf-yff8WhfnAOv4MoA/exec", {
+    const response = await fetch("https://cors-anywhere.herokuapp.com/"+"https://script.google.com/macros/s/AKfycbztzl7tuBZDQDlSsfsHbfzwyZoP4Owb1bC-Q7zH-Knu8n8Q6i7xhf-yff8WhfnAOv4MoA/exec", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ change: -1 })
