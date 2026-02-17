@@ -2,6 +2,39 @@ const title = "In person tutoring";
 const status = "open";
 const date = "March 12th, 2026"
 
+// const sheetUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSMNzdkNruqX5dbEIrNJ9zqnRIV8OZU-7FrTHsHen7AZ_qwQ5Q2YftL7PswHdGKffo-HRZqMcsArB90/pub?output=csv";
+
+// fetch(sheetUrl)
+//   .then(res => res.text())
+//   .then(data => {
+//     try {
+//       // Google wraps JSON in: google.visualization.Query.setResponse(...)
+//       const jsonTextMatch = data.match(/google\.visualization\.Query\.setResponse\(([\s\S]*)\);/);
+
+//       if (!jsonTextMatch || !jsonTextMatch[1]) {
+//         throw new Error("Failed to parse Google Sheets JSON");
+//       }
+
+//       const json = JSON.parse(jsonTextMatch[1]);
+//       const row = json.table.rows[0].c;
+
+//       const title = row[0]?.v || "";
+//       const status = (row[1]?.v || "").toLowerCase();
+//       const date = row[2]?.v || "";
+
+const params = new URLSearchParams(window.location.search);
+
+if (window.location.pathname.includes("index.html")) {
+    if (params.get("submitted") === "true") {
+        const toastLiveExample = document.getElementById('liveToast')
+
+        const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample)
+        toastBootstrap.show()
+
+        window.history.replaceState({}, document.title, window.location.pathname);
+    }
+}
+
 if (window.location.pathname.includes("signup.html")) {
 
     const card = document.createElement("div");
@@ -41,12 +74,12 @@ if (window.location.pathname.includes("form.html")) {
     if (status == "open") {
          card.innerHTML = `
         <iframe 
-            data-tally-src="https://tally.so/embed/D4NByN?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
+            data-tally-src="https://tally.so/embed/D4NByN?transparentBackground=1&dynamicHeight=1"
             loading="lazy"
-            width="100%" 
-            height="686" 
-            frameborder="0" 
-            marginheight="0" 
+            width="100%"
+            height="1870"
+            frameborder="0"
+            marginheight="0"
             marginwidth="0"
             title="Library Tutoring Attendance">
         </iframe>
