@@ -29,7 +29,7 @@ Papa.parse(sheetUrl, {
     // your existing logic here
 
     if (window.location.pathname.includes("signup.html")) {
-
+        //document.getElementById("loadsign").remove();
         const card = document.createElement("div");
         card.className = "card w-50 mx-auto";
 
