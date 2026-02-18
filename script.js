@@ -2,24 +2,31 @@
 // const status = "open";
 // const date = "March 12th, 2026";
 
-const sheetUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSMNzdkNruqX5dbEIrNJ9zqnRIV8OZU-7FrTHsHen7AZ_qwQ5Q2YftL7PswHdGKffo-HRZqMcsArB90/pub?output=csv" + "&t=" + Date.now();
+const sheetUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSMNzdkNruqX5dbEIrNJ9zqnRIV8OZU-7FrTHsHen7AZ_qwQ5Q2YftL7PswHdGKffo-HRZqMcsArB90/pub?output=csv";
 
-fetch(sheetUrl)
-  .then(res => res.text())
-  .then(data => {
-    const rows = data.trim().split(/\r?\n/).map(r => r.split(","));
+Papa.parse(sheetUrl, {
+  download: true,     // tells Papa to fetch the URL
+  header: true,       // converts rows into objects using header row
+  skipEmptyLines: true,
+  downloadRequestHeaders: {
+    "Cache-Control": "no-cache"
+  },
 
+  complete: function(results) {
 
-    const row = rows[1]; // first data row after header
+    const row = results.data.find(r =>
+    r &&
+    r.Status &&
+    r.Status.toString().trim() !== ""
+    ) || {};
 
-    const title = (row[0] || "");
-    const status = (row[1] || "")
-    .replace(/^"|"$/g, "")
-    .trim()
-    .toLowerCase();
-    const date = (row[2] || "");
+    const title = row.Title || "";
+    const status = (row.Status || "").trim().toLowerCase();
+    const date = row.Date || "";
 
     console.log(title, status, date);
+
+    // your existing logic here
 
     if (window.location.pathname.includes("signup.html")) {
 
@@ -87,7 +94,13 @@ fetch(sheetUrl)
 
         footer.parentNode.insertBefore(card, footer);
     }
-  });
+    },
+
+    error: function(err) {
+        console.error("CSV parse error:", err);
+    }
+
+    });
 
 const params = new URLSearchParams(window.location.search);
 
