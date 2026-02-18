@@ -7,13 +7,17 @@ const sheetUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSMNzdkNruqX5d
 fetch(sheetUrl)
   .then(res => res.text())
   .then(data => {
-    const rows = data.split("\n").map(r => r.split(","));
+    const rows = data.trim().split(/\r?\n/).map(r => r.split(","));
+
 
     const row = rows[1]; // first data row after header
 
-    const title = (row[0] || "").replace(/^"|"$/g, "");;
-    const status = (row[1] || "").toLowerCase().replace(/^"|"$/g, "");;
-    const date = (row[2] || "").replace(/^"|"$/g, "");;
+    const title = (row[0] || "");
+    const status = (row[1] || "")
+    .replace(/^"|"$/g, "")
+    .trim()
+    .toLowerCase();
+    const date = (row[2] || "");
 
     console.log(title, status, date);
 
