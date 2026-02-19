@@ -1,12 +1,8 @@
-// const title = "In person tutoring";
-// const status = "open";
-// const date = "March 12th, 2026";
-
 const sheetUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSMNzdkNruqX5dbEIrNJ9zqnRIV8OZU-7FrTHsHen7AZ_qwQ5Q2YftL7PswHdGKffo-HRZqMcsArB90/pub?output=csv";
 
 Papa.parse(sheetUrl, {
-  download: true,     // tells Papa to fetch the URL
-  header: true,       // converts rows into objects using header row
+  download: true,    
+  header: true,      
   skipEmptyLines: true,
   downloadRequestHeaders: {
     "Cache-Control": "no-cache"
@@ -14,55 +10,56 @@ Papa.parse(sheetUrl, {
 
   complete: function(results) {
 
-    const row = results.data.find(r =>
-    r &&
-    r.Status &&
-    r.Status.toString().trim() !== ""
-    ) || {};
-
-    const title = row.Title || "";
-    const status = (row.Status || "").trim().toLowerCase();
-    const date = row.Date || "";
-
-    console.log(title, status, date);
-
-    // your existing logic here
+    const rows = results.data.filter(r =>
+        r &&
+        r.Status &&
+        r.Status.toString().trim() !== ""
+    );
 
     if (window.location.pathname.includes("signup.html")) {
+        rows.forEach((row, i) => {
 
-        const card = document.createElement("div");
-        card.className = "card w-50 mx-auto";
+            const title = row.Title || "";
+            const status = (row.Status || "").trim().toLowerCase();
+            const date = row.Date || "";
 
-        if (status == "open") {
-            card.innerHTML = `
-            <div class="card-header">EVENT - ${date}</div> 
-            <div class="card-body">
-                <h5 class="card-title">${title}</h5>
-                <p class="card-text">Status: OPEN</p>
-                <a href="form.html" class="btn btn-primary">Attend</a>
-            </div>
-            `;
-        } else {
-            card.innerHTML = `
-            <div class="card-header">EVENT - ${date}</div>
-            <div class="card-body">
-                <h5 class="card-title">${title}</h5>
-                <p class="card-text">Status: CLOSED</p>
-                <p>Sorry, registration for this event has closed. Please check back again later.</p>
-            </div>
-            `;
-        }
-        
+            const card = document.createElement("div");
+            card.className = "card w-50 mx-auto";
+            card.style.marginBottom = "1rem";
 
-        const footer = document.querySelector("footer");
+            if (status == "open") {
+                card.innerHTML = `
+                <div class="card-header">EVENT - ${date}</div> 
+                <div class="card-body">
+                    <h5 class="card-title">${title}</h5>
+                    <p class="card-text">Status: OPEN</p>
+                    <a href="form.html" class="btn btn-primary">Attend</a>
+                </div>
+                `;
+            } else {
+                card.innerHTML = `
+                <div class="card-header">EVENT - ${date}</div>
+                <div class="card-body">
+                    <h5 class="card-title">${title}</h5>
+                    <p class="card-text">Status: CLOSED</p>
+                    <p>Sorry, registration for this event has closed. Please check back again later.</p>
+                </div>
+                `;
+            }
+            const footer = document.querySelector("footer");
 
-        footer.parentNode.insertBefore(card, footer);
+            footer.parentNode.insertBefore(card, footer);
+        });
     }
+        
 
     if (window.location.pathname.includes("form.html")) {
 
         const card = document.createElement("div"); // Create container
         card.className = "tally-form w-100 mx-auto";
+
+        const firstRow = rows[0] || {};
+        const status = (firstRow.Status || "").trim().toLowerCase();
 
         if (status == "open") {
             card.innerHTML = `
@@ -85,6 +82,7 @@ Papa.parse(sheetUrl, {
                     Tally.loadEmbeds();
                 }
             };
+            
             document.body.appendChild(script);
         } else {
             card.innerHTML = '<p>Sorry, you have been stopped because the event registration has closed. Please check again later.</p>'
