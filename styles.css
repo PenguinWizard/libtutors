@@ -88,3 +88,8 @@ body {
     opacity: 1;
   }
 }
+
+mark {
+    border-radius: 4px;
+    background-color: white;
+}
