@@ -93,6 +93,12 @@ Papa.parse(sheetUrl, {
 
         footer.parentNode.insertBefore(card, footer);
     }
+
+    const spinner = document.getElementById("loadingSpinner");
+    if (spinner) {
+        spinner.style.display = "none";
+    }
+    
     },
 
     error: function(err) {
