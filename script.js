@@ -29,7 +29,7 @@ Papa.parse(sheetUrl, {
 
             if (status == "open") {
                 card.innerHTML = `
-                <div class="card-header d-flex align-items-center justify-content-start">EVENT - ${date} <span class="badge text-bg-primary d-inline-block" style="margin-left: 15px;">Upcoming</span></div> 
+                <div class="card-header d-flex align-items-center justify-content-start">EVENT - ${date}</div> 
                 <div class="card-body">
 
                     <h5 class="card-title">${title}</h5>
