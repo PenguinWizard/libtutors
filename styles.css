@@ -72,11 +72,15 @@ body {
 
 .card {
     transition: 0.2s;
+    position: relative;
+    z-index: -1;
 }
 
 .card:hover {
     transform: translateY(-1px);
     box-shadow: 0 6px 6px rgba(0, 0, 0, 0.15);
+    position: relative;
+    z-index: -1;
 }
 
 .page-content {
