@@ -31,6 +31,8 @@ body {
     background-size: 100% 0.1em;
 }
 .menu {
+    position: sticky;
+    top: 0;
     background-color: black;
     overflow: hidden;
     color: white;
