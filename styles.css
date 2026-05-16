@@ -1,5 +1,5 @@
 body {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Tahoma';
     font-optical-sizing: auto;
     font-style: normal;
 }
@@ -51,6 +51,7 @@ body {
     transition-duration: 0.5s;
     background-color: #e0dfda;
     color: black;
+    transform: translateY(5px);
 }
 .menu a.active {
     background-color: white;
