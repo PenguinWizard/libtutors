@@ -21,6 +21,9 @@ window.addEventListener("scroll", () => {
     }
 });
 
-document.getElementById("closebutton").addEventListener("click", () => {
+document.getElementById("closebutton1").addEventListener("click", () => {
+    window.location.href = "https://cambriantutors.org/book.html"
+})
+document.getElementById("closebutton2").addEventListener("click", () => {
     window.location.href = "https://cambriantutors.org/book.html"
 })
