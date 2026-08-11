@@ -11,4 +11,16 @@ if (window.location.pathname.includes("index.html")) {
     }
 }
 
+const navbar = document.querySelector(".menu");
 
+window.addEventListener("scroll", () => {
+    if (window.scrollY > 0) {
+        navbar.classList.add("scrolled");
+    } else {
+        navbar.classList.remove("scrolled");
+    }
+});
+
+document.getElementById("closebutton").addEventListener("click", () => {
+    window.location.href = "https://cambriantutors.org/book.html"
+})

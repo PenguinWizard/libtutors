@@ -113,3 +113,19 @@ mark {
   padding-right: 20px;
   padding-top: 20px;
 }
+
+.menu {
+    background: rgba(0, 0, 0, 1); 
+    backdrop-filter: blur(0px); 
+    -webkit-backdrop-filter: blur(0px);
+    transition: background 0.3s ease-in-out, backdrop-filter 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    will-change: background, backdrop-filter;
+    transform: translateZ(0);
+}
+
+.menu.scrolled {
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+}
